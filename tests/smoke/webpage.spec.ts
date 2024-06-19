@@ -10,7 +10,7 @@ let commentsPage: CommentsPage;
 test.describe("Verify service main pages", () => {
   test("home page title", { tag: "@GAD-R01-01" }, async ({ page }) => {
     homePage = new HomePage(page);
-    await homePage.goto();
+    await homePage.goTo();
 
     const title = await homePage.title();
     expect(title).toContain("GAD");
