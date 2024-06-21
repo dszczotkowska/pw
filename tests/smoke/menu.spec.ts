@@ -14,7 +14,7 @@ test.describe("Verify service main buttons", () => {
     homePage = new HomePage(page);
   });
 
-  test.only("comments button navigate to comments page", { tag: ["@GAD-R01-03"] }, async ({ page }) => {
+  test("comments button navigate to comments page", { tag: ["@GAD-R01-03"] }, async ({ page }) => {
     await articlesPage.goTo();
     await articlesPage.mainMenu.commentsButton.click();
 
@@ -22,7 +22,7 @@ test.describe("Verify service main buttons", () => {
     expect(title).toContain("Comments");
   });
 
-  test.only("articles button navigate to articles page", { tag: ["@GAD-R01-03"] }, async ({ page }) => {
+  test("articles button navigate to articles page", { tag: ["@GAD-R01-03"] }, async ({ page }) => {
     await commentsPage.goTo();
     await articlesPage.mainMenu.articlesButton.click();
 
@@ -30,7 +30,7 @@ test.describe("Verify service main buttons", () => {
     expect(title).toContain("Articles");
   });
 
-  test.only("home button navigate to home page", { tag: ["@GAD-R01-03"] }, async ({ page }) => {
+  test("home button navigate to home page", { tag: ["@GAD-R01-03"] }, async ({ page }) => {
     await commentsPage.goTo();
     await articlesPage.mainMenu.homeButton.click();
 
