@@ -1,12 +1,13 @@
 import { LoginPage } from "../../src/pages/login.page";
 import { WelcomePage } from "../../src/pages/welcome.page";
+import { testUser1 } from "../../src/test data/user.data";
 import { expect, test } from "@playwright/test";
 
 let loginPage: LoginPage;
 let welcomePage: WelcomePage;
 
-const correctLogin = "Moses.Armstrong@Feest.ca";
-const correctPassword = "test1";
+const correctLogin = testUser1.userEmail;
+const correctPassword = testUser1.userPassword;
 
 test.describe("Verify logins", () => {
   test.only("correct login to system", async ({ page }) => {
