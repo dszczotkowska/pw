@@ -10,7 +10,7 @@ const correctLogin = testUser1.userEmail;
 const correctPassword = testUser1.userPassword;
 
 test.describe("Verify logins", () => {
-  test.only("correct login to system", async ({ page }) => {
+  test("correct login to system", async ({ page }) => {
     loginPage = new LoginPage(page);
     welcomePage = new WelcomePage(page);
 
@@ -21,5 +21,18 @@ test.describe("Verify logins", () => {
 
     expect(welcomeText).toEqual(`Hi ${correctLogin}!`);
     expect(welcomePageTitle).toContain("Welcome");
+  });
+
+  test("reject login with incorrect password", async ({ page }) => {
+    loginPage = new LoginPage(page);
+    const expectedErrorMessage = "Invalid username or password";
+
+    await loginPage.loginToSystem(correctLogin, "incorrect password");
+
+    const title = await loginPage.title();
+    const actualErrorMessage = await loginPage.getErrorMessage();
+
+    expect(title).toContain("Login");
+    expect(actualErrorMessage).toContain(expectedErrorMessage);
   });
 });
