@@ -14,6 +14,8 @@ export class RegisterPage extends BasePage {
   registerButton = this.page.getByTestId("register-button");
   avatarSelect = this.page.getByRole("combobox");
 
+  registerPopUp = this.page.getByTestId("alert-popup");
+
   async register(firstName: string, lastName: string, email: string, password: string): Promise<void> {
     await this.firstNameInput.fill(firstName);
     await this.lastNameInput.fill(lastName);
